@@ -14,15 +14,13 @@ body{
 
 nav{
     display: flex;
-    width: 100%;
-    border-bottom: 1px solid var(--border-color);
+    width: 100vw;
 }
 
 nav > .nav-section{
-    padding: 3rem 2rem;
+    padding: 1rem 1rem;
     display: flex;
     gap: 1rem;
-    border-left: 1px solid var(--border-color);
     align-items: center;
     justify-content: center;
 }
@@ -32,17 +30,42 @@ nav > .nav-section{
 }
 
 #nav-link-section{
-    gap:6rem;
+    gap:3rem;
 }
 
 #nav-social-section{
-    gap:6rem;
+    gap:3rem;
 }
 
 #nav-logo-section>a>i{
     font-size: 2.5rem;
 }
+#nav-link-section>a{
+    transition: ease-out 1s;
+}
+#nav-social-section>a>i{
+    transition: ease-out 1s;
+    font-size: 1.5rem;
+}
+#nav-contact-section>a{
+    transition: ease-out 1s;
+}
 
+#nav-social-section>a>i:hover{
+    transition:ease 1s;
+    font-size: 2rem;
+    cursor: pointer;
+}
+#nav-link-section>a:hover{
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition:cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s;
+}
+#nav-contact-section>a:hover{
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition:cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s;
+}
 #nav-logo-section,#nav-link-section{
     flex-basis:calc(100%/3);
 }
