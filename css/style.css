@@ -7,8 +7,8 @@ body {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     margin: 0px;
     /* overflow:none;
     scroll-snap-type: y mandatory;
@@ -21,12 +21,12 @@ body .container {
     scroll-snap-type: x mandatory;
     overflow-x:scroll;
     display: flex;
+    flex-direction: column;
 }
 
 .container section {
     flex: none;
     display: flex;
-    flex-direction: column;
     justify-content: top;
     align-items:center;
     width: 100vw;
@@ -40,13 +40,14 @@ body .container {
 nav {
     display: flex;
     /* flex-direction: column; */
-    align-items: center;
+    align-items: flex-start;
     position:absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    margin: 0;
-    background-color: rgba(7, 12, 26 .5);
+    width: 100vw;
+    margin: 0rem .1rem;
+    overflow:hidden ;
+    color: rgba(7, 12, 226 .1);
 }
 
 nav>.nav-section {
@@ -64,11 +65,11 @@ nav>.nav-section {
 }
 
 #nav-link-section {
-    gap: 3rem;
+    gap: 1rem;
 }
 
 #nav-social-section {
-    gap: 3rem;
+    gap: 1rem;
 }
 
 #nav-logo-section>a>i {
