@@ -413,54 +413,54 @@ main {
 }
 
 .l16::before {
-    background: var(--background-color);
+    background: lightskyblue;
     animation: typewriter 3.25s steps(27) 110s forwards;
 }
 
 .l16::after {
     width: .125em;
     background: white;
-    animation: appear 110s steps(1) forwards, typewriter 3.25s steps(27) 110s forwards,
+    animation: appearF 110s steps(1) forwards, typewriter 3.25s steps(27) 110s forwards,
         blink .75s linear infinite,
-        vanish 1s ease 113.5s forwards;
+        vanishF 1s ease 113.5s forwards;
 }
 
 .l17::before {
-    background: var(--background-color);
+    background: lightskyblue;
     animation: typewriter 3.25s steps(25) 114.25s forwards;
 }
 
 .l17::after {
     width: .125em;
     background: white;
-    animation: appear 114.25s steps(1) forwards, typewriter 3.25s steps(25) 114.25s forwards,
+    animation: appearF 114.25s steps(1) forwards, typewriter 3.25s steps(25) 114.25s forwards,
         blink .75s linear infinite,
-        vanish 1s ease 117.75s forwards;
+        vanishF 1s ease 117.75s forwards;
 }
 
 .l18::before {
-    background: var(--background-color);
+    background: lightskyblue;
     animation: typewriter 4.25s steps(33) 118.5s forwards;
 }
 
 .l18::after {
     width: .125em;
     background: white;
-    animation: appear 118.5s steps(1) forwards, typewriter 4.25s steps(33) 118.5s forwards,
+    animation: appearF 118.5s steps(1) forwards, typewriter 4.25s steps(33) 118.5s forwards,
         blink .75s linear infinite,
-        vanish 1s ease 123.5s forwards;
+        vanishF 1s ease 123.5s forwards;
 }
 
 .l19::before {
-    background: var(--background-color);
+    background: lightskyblue;
     animation: typewriter 5s steps(40) 124.25s forwards;
 }
 
 .l19::after {
     width: .125em;
     background: white;
-    animation: appear 124.25s steps(1) forwards, typewriter 5s steps(40) 124.25s forwards,
-        blink .75s linear infinite;
+    animation: appearF 124.25s steps(1) forwards, typewriter 5s steps(40) 124.25s forwards,
+    blink .75s linear infinite;
 }
 
 @keyframes typewriter {
@@ -491,6 +491,34 @@ main {
     }
 }
 
+@keyframes appearF {
+    from {
+        background: lightskyblue;
+    }
+
+    to {
+        background: white;
+    }
+}
+
+@keyframes vanishF {
+    to {
+        background: lightskyblue;
+    }
+}
+@keyframes appearFicon{
+    to{
+        color:white;
+    }
+}
+
+footer {
+    background-color: lightskyblue;
+}
+
+footer .typeline {
+    background: lightskyblue;
+}
 
 .review-mail {
     position: absolute;
@@ -503,4 +531,12 @@ main {
     font-size: clamp(1.75rem, 2.75vw, 2.75rem);
     cursor: pointer;
     transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
+}
+
+.review-mail>a>i::before{
+    color:transparent;
+    animation: appearFicon 129.5s steps(1) 2s forwards;
+}
+.review-mail>a>i::after{
+    animation: appearFicon 129.5s steps(1) 2s forwards;
 }
