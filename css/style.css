@@ -10,58 +10,69 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0px;
-    /* overflow:none;
-    scroll-snap-type: y mandatory;
+    overflow: none;
+    /* scroll-snap-type: y mandatory;
     overflow-y: scroll; */
+    overflow-x: hidden;
+    justify-content: center;
 }
 
 body .container {
-    width: 100%;
-    height: 100%;
-    scroll-snap-type: x mandatory;
-    overflow-x:scroll;
+    width: 100vw;
+    height: 100vh;
+    /* scroll-snap-type: y mandatory;
+    overflow-y: scroll; */
     display: flex;
     flex-direction: column;
+
 }
 
 .container section {
     flex: none;
     display: flex;
-    justify-content: top;
-    align-items:center;
+    justify-content: center;
+    align-items: top;
     width: 100vw;
-    height: 100vh;
-    scroll-snap-align:start;
+    height: 165vh;
+    scroll-snap-align: end;
 }
-.sectionX{
+
+.sectionX {
+
+    align-items: center;
     padding-top: 5rem;
 }
 
 nav {
     display: flex;
+    background: rgba(135, 112, 131, 0.1);
     /* flex-direction: column; */
-    align-items: flex-start;
-    position:absolute;
+    align-items: center;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    margin: 0rem .1rem;
-    overflow:hidden ;
-    color: rgba(7, 12, 226 .1);
+    margin: rem 1rem 1rem 0rem;
+    overflow: auto;
+    color: rgba(7, 12, 26 .1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    z-index: 1;
+    /* filter: blur(8px); */
 }
 
 nav>.nav-section {
-    padding: 1rem 1rem;
+    padding: 1rem 2rem 1rem 1rem;
 
     display: flex;
     /* flex-direction: column; */
     gap: 1rem;
-    align-items:flex-start;
-    justify-content:flex-start;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 #nav-logo-section {
-    justify-content:flex-start;
+    justify-content: flex-start;
 }
 
 #nav-link-section {
@@ -77,59 +88,61 @@ nav>.nav-section {
 }
 
 #nav-logo-section>a>i>img {
-    transition: ease-out 1s;
+    transition: ease-out .5s;
     height: 2rem;
 }
 
 #nav-link-section>a {
-    transition: ease-out 1s;
+    transition: ease-out .5s;
 }
 
 #nav-social-section>a>i {
-    transition: ease-out 1s;
+    transition: ease-out .5s;
     font-size: 1.5rem;
 }
 
 #nav-contact-section>a {
-    transition: ease-out 1s;
+    transition: ease-out .5s;
 }
 
 #nav-logo-section>a>i>img:hover {
     height: 3rem;
-    transition:cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
+    cursor: cell;
+
 }
 
 #nav-social-section>a>i:hover {
-    transition: ease 1s;
+    transition: ease .5s;
     font-size: 2rem;
-    cursor: pointer;
+    cursor: cell;
 }
 
 #nav-link-section>a:hover {
     font-size: 1.5rem;
-    cursor: pointer;
-    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s;
+    cursor: cell;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
 }
 
 #nav-contact-section>a:hover {
     font-size: 1.5rem;
-    cursor: pointer;
-    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s;
+    cursor: cell;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
 }
 
 #nav-logo-section,
 #nav-link-section {
-    flex-basis: calc(100%/3);
+    flex-basis: calc(100vw/3);
 }
 
 #nav-social-section,
 #nav-contact-section {
-    flex-grow: 1;
+    flex-grow: .5;
 }
 
 * {
     scroll-behavior: smooth;
-    cursor: cell;
+    cursor: crosshair;
     box-sizing: border-box;
 }
 
@@ -140,12 +153,13 @@ h3,
 a,
 p,
 li,
+span,
+
 .greeting span {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 400;
-    color: white;
-    cursor: cell;
-
+    color: whitesmoke;
+    cursor: crosshair;
 }
 
 a {
@@ -157,15 +171,16 @@ a {
     background-image: url("https://media.giphy.com/media/26vUyWzmjBIlNJvRC/giphy.gif");
     background-size: cover;
     -webkit-background-clip: text;
+    justify-content: center;
 }
 
 .greeting span:hover {
     -webkit-text-fill-color: transparent;
+    cursor: cell;
     font-size: 8vw;
     /* background-color: aqua; */
     transition: ease-in-out;
     transition-duration: .2s;
-    cursor: url("https://media.giphy.com/media/2sebI6np6MGKvoOGZK/giphy.gif"), auto;
 }
 
 .greeting span {
@@ -178,4 +193,314 @@ a {
 
 main {
     flex-grow: 1;
+}
+
+.typeline {
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    position: sticky;
+    width: fit-content;
+    margin-left: 1rem;
+
+}
+
+.typeline::after,
+.typeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* animation: name duration timing-function delay iteration-count direction fill-mode; */
+.l1::before {
+    background: var(--background-color);
+    animation: typewriter 1s steps(4) 5s forwards;
+}
+
+.l1::after {
+    width: .125em;
+    background: white;
+    animation: typewriter 1s steps(4) 5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 6.75s forwards;
+}
+
+.l2::before {
+    background: var(--background-color);
+    animation: typewriter 4s steps(32) 7.5s forwards;
+}
+
+.l2::after {
+    width: .125em;
+    background: white;
+    animation: appear 7.5s steps(1) forwards, typewriter 4s steps(32) 7.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 11.75s forwards;
+}
+
+.l3::before {
+    background: var(--background-color);
+    animation: typewriter 4s steps(31) 12.5s forwards;
+}
+
+.l3::after {
+    width: .125em;
+    background: white;
+    animation: appear 12.5s steps(1) forwards, typewriter 4s steps(31) 12.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 16.75s forwards;
+}
+
+.l4::before {
+    background: var(--background-color);
+    animation: typewriter 1.25s steps(5) 17.5s forwards;
+}
+
+.l4::after {
+    width: .125em;
+    background: white;
+    animation: appear 17.5s steps(1) forwards, typewriter 1.25s steps(5) 17.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 19s forwards;
+}
+
+.l5::before {
+    background: var(--background-color);
+    animation: typewriter 3.75s steps(30) 19.75s forwards;
+}
+
+.l5::after {
+    width: .125em;
+    background: white;
+    animation: appear 19.75s steps(1) forwards, typewriter 3.75s steps(30) 19.75s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 24.75s forwards;
+}
+
+.l6::before {
+    background: var(--background-color);
+    animation: typewriter 3.75s steps(29) 25.5s forwards;
+}
+
+.l6::after {
+    width: .125em;
+    background: white;
+    animation: appear 25.5s steps(1) forwards, typewriter 3.75s steps(29) 25.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 29.5s forwards;
+}
+
+.l7::before {
+    background: var(--background-color);
+    animation: typewriter 3.75s steps(30) 30.25s forwards;
+}
+
+.l7::after {
+    width: .125em;
+    background: white;
+    animation: appear 30.25s steps(1) forwards, typewriter 3.75s steps(30) 30.25s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 36.5s forwards;
+}
+
+
+.l8::before {
+    background: var(--background-color);
+    animation: typewriter 1s steps(4) 37.25s forwards;
+}
+
+.l8::after {
+    width: .125em;
+    background: white;
+    animation: appear 37.25s steps(1) forwards, typewriter 1s steps(4) 37.25s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 38.5s forwards;
+}
+
+.l9::before {
+    background: var(--background-color);
+    animation: typewriter 3.25s steps(26) 39.25s forwards;
+}
+
+.l9::after {
+    width: .125em;
+    background: white;
+    animation: appear 39.25s steps(1) forwards, typewriter 3.25s steps(26) 39.25s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 42.75s forwards;
+}
+
+.l10::before {
+    background: var(--background-color);
+    animation: typewriter 4.25s steps(35) 43.5s forwards;
+}
+
+.l10::after {
+    width: .125em;
+    background: white;
+    animation: appear 43.5s steps(1) forwards, typewriter 4.25s steps(35) 43.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 48s forwards;
+}
+
+.l11::before {
+    background: var(--background-color);
+    animation: typewriter 3.5s steps(28) 48.75s forwards;
+}
+
+.l11::after {
+    width: .125em;
+    background: white;
+    animation: appear 48.75s steps(1) forwards, typewriter 3.5s steps(28) 48.75s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 52.5s forwards;
+}
+
+.l12::before {
+    background: var(--background-color);
+    animation: typewriter 1.25s steps(5) 53.25s forwards;
+}
+
+.l12::after {
+    width: .125em;
+    background: white;
+    animation: appear 53.25s steps(1) forwards, typewriter 1.25s steps(5) 53.25s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 54.75s forwards;
+}
+
+.l13::before {
+    background: var(--background-color);
+    animation: typewriter 4.25s steps(33) 55.5s forwards;
+}
+
+.l13::after {
+    width: .125em;
+    background: white;
+    animation: appear 55.5s steps(1) forwards, typewriter 4.25s steps(33) 55.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 60s forwards;
+}
+
+.l14::before {
+    background: var(--background-color);
+    animation: typewriter 4.25s steps(35) 60.75s forwards;
+}
+
+.l14::after {
+    width: .125em;
+    background: white;
+    animation: appear 60.75s steps(1) forwards, typewriter 4.25s steps(35) 60.75s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 65.25s forwards;
+}
+
+.l15::before {
+    background: var(--background-color);
+    animation: typewriter 4.25s steps(35) 66s forwards;
+}
+
+.l15::after {
+    width: .125em;
+    background: white;
+    animation: appear 66s steps(1) forwards, typewriter 4.25s steps(35) 66s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 90s forwards;
+}
+
+.l16::before {
+    background: var(--background-color);
+    animation: typewriter 3.25s steps(27) 110s forwards;
+}
+
+.l16::after {
+    width: .125em;
+    background: white;
+    animation: appear 110s steps(1) forwards, typewriter 3.25s steps(27) 110s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 113.5s forwards;
+}
+
+.l17::before {
+    background: var(--background-color);
+    animation: typewriter 3.25s steps(25) 114.25s forwards;
+}
+
+.l17::after {
+    width: .125em;
+    background: white;
+    animation: appear 114.25s steps(1) forwards, typewriter 3.25s steps(25) 114.25s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 117.75s forwards;
+}
+
+.l18::before {
+    background: var(--background-color);
+    animation: typewriter 4.25s steps(33) 118.5s forwards;
+}
+
+.l18::after {
+    width: .125em;
+    background: white;
+    animation: appear 118.5s steps(1) forwards, typewriter 4.25s steps(33) 118.5s forwards,
+        blink .75s linear infinite,
+        vanish 1s ease 123.5s forwards;
+}
+
+.l19::before {
+    background: var(--background-color);
+    animation: typewriter 5s steps(40) 124.25s forwards;
+}
+
+.l19::after {
+    width: .125em;
+    background: white;
+    animation: appear 124.25s steps(1) forwards, typewriter 5s steps(40) 124.25s forwards,
+        blink .75s linear infinite;
+}
+
+@keyframes typewriter {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes vanish {
+    to {
+        background: var(--background-color);
+    }
+}
+
+@keyframes appear {
+    from {
+        background: var(--background-color);
+    }
+
+    to {
+        background: white;
+    }
+}
+
+
+.review-mail {
+    position: absolute;
+    padding: 0em .25em;
+    transition: ease-out .5s;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.review-mail>a:hover {
+    font-size: clamp(1.75rem, 2.75vw, 2.75rem);
+    cursor: pointer;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
 }
