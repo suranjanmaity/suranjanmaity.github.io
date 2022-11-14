@@ -1,6 +1,7 @@
 :root {
     --background-color: rgb(7, 12, 26);
     --border-color: rgb(255, 255, 255, 0.1);
+    --typeline-size: 4vw;
 }
 
 body {
@@ -33,7 +34,8 @@ body .container {
     justify-content: center;
     align-items: top;
     width: 100vw;
-    height: 165vh;
+    min-height: 100vh;
+    height: fit-content;
     scroll-snap-align: end;
 }
 
@@ -45,12 +47,14 @@ body .container {
 
 #project{
     background-color: darkblue;
+    min-height: 100vh;
 }
 #about{
     background-color: darkorange;
+    min-height: 100vh;
 }
 #contact{
-
+    min-height: 100vh;
 }
 
 nav {
@@ -206,12 +210,12 @@ main {
 }
 
 .typeline {
-    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-size : var(--typeline-size);
     color: white;
     font-family: 'Courier New', Courier, monospace;
     position: sticky;
     width: fit-content;
-    margin-left: 1rem;
+    margin-left: 0rem;
 
 }
 
@@ -404,20 +408,20 @@ main {
 .l14::after {
     width: .125em;
     background: white;
-    animation: appear 60.75s steps(1) forwards, typewriter 4.25s steps(35) 60.75s forwards,
+    animation: appear 60.75s steps(1) forwards, typewriter 4.25s steps(33) 60.75s forwards,
         blink .75s linear infinite,
         vanish 1s ease 65.25s forwards;
 }
 
 .l15::before {
     background: var(--background-color);
-    animation: typewriter 4.25s steps(35) 66s forwards;
+    animation: typewriter 4.25s steps(33) 66s forwards;
 }
 
 .l15::after {
     width: .125em;
     background: white;
-    animation: appear 66s steps(1) forwards, typewriter 4.25s steps(35) 66s forwards,
+    animation: appear 66s steps(1) forwards, typewriter 4.25s steps(33) 66s forwards,
         blink .75s linear infinite,
         vanish 1s ease 90s forwards;
 }
@@ -450,26 +454,26 @@ main {
 
 .l18::before {
     background: lightskyblue;
-    animation: typewriter 4.25s steps(33) 118.5s forwards;
+    animation: typewriter 4.25s steps(34) 118.5s forwards;
 }
 
 .l18::after {
     width: .125em;
     background: white;
-    animation: appearF 118.5s steps(1) forwards, typewriter 4.25s steps(33) 118.5s forwards,
+    animation: appearF 118.5s steps(1) forwards, typewriter 4.25s steps(34) 118.5s forwards,
         blink .75s linear infinite,
         vanishF 1s ease 123.5s forwards;
 }
 
 .l19::before {
     background: lightskyblue;
-    animation: typewriter 5s steps(40) 124.25s forwards;
+    animation: typewriter 5s steps(37) 124.25s forwards;
 }
 
 .l19::after {
     width: .125em;
     background: white;
-    animation: appearF 124.25s steps(1) forwards, typewriter 5s steps(40) 124.25s forwards,
+    animation: appearF 124.25s steps(1) forwards, typewriter 5s steps(37) 124.25s forwards,
     blink .75s linear infinite;
 }
 
@@ -531,16 +535,16 @@ footer .typeline {
 }
 
 .review-mail {
-    position: absolute;
+    /* position: absolute; */
     padding: 0em .25em;
     transition: ease-out .5s;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-size: var(--typeline-size);
 }
 
 .review-mail>a:hover {
-    font-size: clamp(1.75rem, 2.75vw, 2.75rem);
+    font-size: var(--typeline-size);
     cursor: pointer;
-    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
+    transition:cubic-bezier(1, 0, 0, 1) .5s;
 }
 
 .review-mail>a>i::before{
