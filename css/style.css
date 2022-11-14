@@ -35,7 +35,6 @@ body .container {
     align-items: top;
     width: 100vw;
     min-height: 100vh;
-    height: fit-content;
     scroll-snap-align: end;
 }
 
@@ -45,6 +44,9 @@ body .container {
     padding-top: 5rem;
 }
 
+#thanks-for-the-visit{
+    height: fit-content;
+}
 #project{
     background-color: darkblue;
     min-height: 100vh;
@@ -402,7 +404,7 @@ main {
 
 .l14::before {
     background: var(--background-color);
-    animation: typewriter 4.25s steps(35) 60.75s forwards;
+    animation: typewriter 4.25s steps(33) 60.75s forwards;
 }
 
 .l14::after {
@@ -434,7 +436,7 @@ main {
 .l16::after {
     width: .125em;
     background: white;
-    animation: appearF 110s steps(1) forwards, typewriter 3.25s steps(27) 110s forwards,
+    animation: appearF 1s steps(1) forwards, typewriter 3.25s steps(27) 110s forwards,
         blink .75s linear infinite,
         vanishF 1s ease 113.5s forwards;
 }
@@ -531,6 +533,7 @@ footer {
 }
 
 footer .typeline {
+    margin-left: .5rem;
     background: lightskyblue;
 }
 
@@ -541,16 +544,18 @@ footer .typeline {
     font-size: var(--typeline-size);
 }
 
+.review-mail>a{
+    cursor: cell;
+}
 .review-mail>a:hover {
-    font-size: var(--typeline-size);
-    cursor: pointer;
+    font-size: var(--typeline-size+.4rem);
     transition:cubic-bezier(1, 0, 0, 1) .5s;
 }
 
 .review-mail>a>i::before{
     color:transparent;
-    animation: appearFicon 129.5s steps(1) 2s forwards;
+    animation: appearFicon 129.20s steps(1) .05s forwards;
 }
 .review-mail>a>i::after{
-    animation: appearFicon 129.5s steps(1) 2s forwards;
+    animation: appearFicon 129.20s steps(1) .05s forwards;
 }
