@@ -3,6 +3,7 @@
 }
 body{
     background: black;
+    width: 100vw;
 }
 .header{
     display: flex;
@@ -11,8 +12,16 @@ body{
 .header img{
     width: 30vw;
 }
-table,th,td{
+.main>table,th,td{
     border: 1px solid gray;
+}
+.skill{
+    max-width: 100vw;
+}
+.skill span{
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    margin: .5rem 0.5rem 0.5rem .5rem;
+    border: 1px double gray;
 }
 .footer a{
     padding: .5rem;
