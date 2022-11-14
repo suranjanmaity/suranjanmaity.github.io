@@ -31,17 +31,18 @@ body .container {
 .container section {
     flex: none;
     display: flex;
-    justify-content: center;
-    align-items: top;
+    flex-direction: column;
+    justify-content:top;
+    align-items: center;
+    padding: 0rem .5rem 0rem .5rem;
     width: 100vw;
     min-height: 100vh;
     scroll-snap-align: end;
 }
 
-.sectionX {
+section .sectionX {
     font-size: 2rem;
-    align-items: center;
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 #thanks-for-the-visit{
@@ -50,7 +51,6 @@ body .container {
 #project{
     background-color: darkblue;
     min-height: 100vh;
-    perspective: -300px;
 }
 #about{
     background-color: darkorange;
@@ -177,6 +177,7 @@ span,
     font-weight: 400;
     color: whitesmoke;
     cursor: crosshair;
+    text-align: center;
 }
 
 a {
@@ -184,11 +185,13 @@ a {
 }
 
 .greeting {
-    padding: 5rem 2rem;
+    padding: 5rem 1rem 0rem 1rem;
     background-image: url("https://media.giphy.com/media/26vUyWzmjBIlNJvRC/giphy.gif");
     background-size: cover;
     -webkit-background-clip: text;
     justify-content: center;
+    align-items: center;
+    width: 100vw;
 }
 
 .greeting span:hover {
@@ -217,8 +220,8 @@ main {
     color: white;
     font-family: 'Courier New', Courier, monospace;
     position: sticky;
-    width: fit-content;
-    margin-left: 0rem;
+    width: max-content;
+    margin: .5rem 1rem 0rem 0rem;
 
 }
 
@@ -470,13 +473,13 @@ main {
 
 .l19::before {
     background: lightskyblue;
-    animation: typewriter 5s steps(37) 124.25s forwards;
+    animation: typewriter 5s steps(36) 124.25s forwards;
 }
 
 .l19::after {
     width: .125em;
     background: white;
-    animation: appearF 124.25s steps(1) forwards, typewriter 5s steps(37) 124.25s forwards,
+    animation: appearF 124.25s steps(1) forwards, typewriter 5s steps(36) 124.25s forwards,
     blink .75s linear infinite;
 }
 
@@ -528,13 +531,24 @@ main {
         color:white;
     }
 }
+#about i{
+    justify-content:end;
+    padding: 1rem 1rem;
+
+}
+#contact p{
+    justify-self: self-end;
+}
 
 footer {
     background-color: lightskyblue;
+    font-size: medium;
+    padding-bottom: 1rem;
 }
 
 footer .typeline {
     margin-left: .5rem;
+    color: black;
     background: lightskyblue;
 }
 
@@ -560,4 +574,18 @@ footer .typeline {
 }
 .review-mail>a>i::after{
     animation: appearFicon 129.20s steps(1) .05s forwards;
+}
+
+.footer-social{
+    display: flex;
+    padding: 1rem;
+    align-self: left;
+    /* width: 100vw; */
+}
+.footer-social>a{
+    justify-content: center;
+    align-items: left;
+    padding: 1rem;
+    background: rgb(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
 }
