@@ -50,6 +50,7 @@ body .container {
 #project{
     background-color: darkblue;
     min-height: 100vh;
+    perspective: -300px;
 }
 #about{
     background-color: darkorange;
@@ -391,13 +392,13 @@ main {
 
 .l13::before {
     background: var(--background-color);
-    animation: typewriter 4.25s steps(33) 55.5s forwards;
+    animation: typewriter 4.25s steps(34) 55.5s forwards;
 }
 
 .l13::after {
     width: .125em;
     background: white;
-    animation: appear 55.5s steps(1) forwards, typewriter 4.25s steps(33) 55.5s forwards,
+    animation: appear 55.5s steps(1) forwards, typewriter 4.25s steps(34) 55.5s forwards,
         blink .75s linear infinite,
         vanish 1s ease 60s forwards;
 }
@@ -548,8 +549,9 @@ footer .typeline {
     cursor: cell;
 }
 .review-mail>a:hover {
-    font-size: var(--typeline-size+.4rem);
-    transition:cubic-bezier(1, 0, 0, 1) .5s;
+    cursor: cell;
+    font-size: var(--typeline-size);
+    transition:ease-in-out .5s;
 }
 
 .review-mail>a>i::before{
