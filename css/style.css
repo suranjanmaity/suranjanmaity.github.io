@@ -173,7 +173,7 @@ li,
 span,
 
 .greeting span {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Audiowide" , cursive;
     font-weight: 400;
     color: whitesmoke;
     cursor: crosshair;
@@ -186,7 +186,8 @@ a {
 
 .greeting {
     padding: 5rem 1rem 0rem 1rem;
-    background-image: url("https://media.giphy.com/media/26vUyWzmjBIlNJvRC/giphy.gif");
+    /* background-image: url("https://media.giphy.com/media/26vUyWzmjBIlNJvRC/giphy.gif"); */
+    background-image: url("https://media.giphy.com/media/fxNRr2Uu0Uaq1wKtui/giphy.gif");
     background-size: cover;
     -webkit-background-clip: text;
     justify-content: center;
@@ -218,7 +219,7 @@ main {
 .typeline {
     font-size : var(--typeline-size);
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Major Mono Display', monospace;
     position: sticky;
     width: max-content;
     margin: .5rem 1rem 0rem 0rem;
@@ -232,7 +233,8 @@ main {
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 0;    
+    /* margin: min-content; */
 }
 
 /* animation: name duration timing-function delay iteration-count direction fill-mode; */
