@@ -1,7 +1,7 @@
 :root {
     --background-color: rgb(7, 12, 26);
     --border-color: rgb(255, 255, 255, 0.1);
-    --typeline-size: 4vw;
+    --typeline-size: 3vw;
 }
 
 body {
@@ -358,13 +358,13 @@ main {
 
 .l10::before {
     background: var(--background-color);
-    animation: typewriter 4.25s steps(35) 43.5s forwards;
+    animation: typewriter 4.25s steps(34) 43.5s forwards;
 }
 
 .l10::after {
     width: .125em;
     background: white;
-    animation: appear 43.5s steps(1) forwards, typewriter 4.25s steps(35) 43.5s forwards,
+    animation: appear 43.5s steps(1) forwards, typewriter 4.25s steps(34) 43.5s forwards,
         blink .75s linear infinite,
         vanish 1s ease 48s forwards;
 }
@@ -533,6 +533,10 @@ main {
         color:white;
     }
 }
+.small{
+    font-size: small;
+}
+
 #about i{
     justify-content:end;
     padding: 1rem 1rem;
