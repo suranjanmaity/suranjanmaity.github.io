@@ -26,10 +26,10 @@ body{
     width: 15rem;
     height: 15rem;
     background-image: url(https://avatars.githubusercontent.com/u/93034695?s=400&u=50fd17ab45d1d3a097575a55b254f64b82ac7698&v=4);
-    background-size: contain;
+    background-size: cover;
     border-radius: 50%;
     background-size:150%;
-    background-position:-4rem, 0;
+    background-position:center;
     background-repeat: no-repeat;
     padding: .5rem;
 }
@@ -76,4 +76,78 @@ li>table td{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+@media screen and (width <= 768px){
+    * {
+        margin: 0;
+        padding: 0;
+        /*overflow-x:hidden;*/
+        border: none;
+    }
+    body {
+        margin: 0 1rem;
+        /*border: 1px solid blue;*/
+        background: #FCEDDA;
+        padding: 1rem 0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction: column;
+    }
+    section{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+    }
+    .header {
+        flex-direction: row;
+        height: 10rem;
+        background-color: #EE4E34;
+        margin-bottom:.5rem;
+        border:none;
+    }
+    .pic {
+        height: 10rem;
+        background-image: url(https://avatars.githubusercontent.com/u/93034695?s=400&u=50fd17ab45d1d3a097575a55b254f64b82ac7698&v=4);
+        border-radius: 1rem 0;
+        background-size: cover;
+        background-position:center;
+    }
+    h2 {
+        background-color: #EE4E34;
+        color: floralwhite;
+        padding: 0 .5rem;
+        margin: .5rem 0;
+        width:110%;
+    }
+
+    .main{
+        /*border: 1px solid red;*/
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .project{
+        width:100%;
+    }
+    table{
+        border: 0;
+        padding: 0;
+        width: 80%;
+    }
+    .skill{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+    .skill span{
+        margin:.2rem;
+    }
+
+    .footer{
+        width:80%;
+    }
 }
