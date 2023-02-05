@@ -55,6 +55,7 @@ section .sectionX {
 #about{
     background-color: darkorange;
     min-height: 100vh;
+    padding: 0 3rem;
 }
 #contact{
     min-height: 100vh;
