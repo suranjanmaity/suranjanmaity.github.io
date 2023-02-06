@@ -606,7 +606,7 @@ footer .typeline {
     padding: 2% 0 2% 2%;
     background: rgba(255, 255, 255, 0.39);
     border-radius: 1rem 0;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1.5s;
+    animation: fade-enter 1.5s;
 }
 .project_item{
     /* border: 1px solid white; */
@@ -633,6 +633,14 @@ footer .typeline {
     /* 100%{
         opacity: 1;
     } */
+}
+@keyframes fade-enter {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
 }
 .entry-animation{
     animation: wipe-enter 1s 1;
