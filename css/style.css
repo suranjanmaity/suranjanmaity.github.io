@@ -608,11 +608,20 @@ footer .typeline {
     border-radius: 1rem 0;
     animation: fade-enter 1.5s;
 }
+.projects>a{
+    display: block;
+    height: 100%;
+    width: 23%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: black;
+}
 .project_item{
     /* border: 1px solid white; */
     background: rgba(228, 226, 222, 0.589);
     height: 100%;
-    width: 23%;
+    width: 100%;
     padding: 1rem;
     margin: 0;
     text-align: center;
@@ -620,6 +629,9 @@ footer .typeline {
     border-radius: 1rem 0;
     opacity: 1;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 @keyframes wipe-enter {
     0%{
@@ -648,6 +660,67 @@ footer .typeline {
 .project_item:hover{
     animation: wipe-enter 1s 1;
 }
+.ardarts:hover{
+    background-image: url(../image/arDartsMob.png);
+    background-image: url(../image/arDartsWin.png);
+    background-position: center;
+    background-size: cover;
+    font-size: 2rem;
+    color: green;
+    transition: ease 1s;
+}
+.project_detail{
+    display: block;
+    color: orange;
+    font-size: .8rem;
+    font-family:"Major Mono Display";
+}
+
+.portfolio:hover{
+    
+    background-image: url(../image/portfolioMob.png);
+    background-image: url(../image/portfolioWin.png);
+    background-position: center;
+    background-size: cover;
+    font-size: 2rem;
+    color: aliceblue;
+    
+}
+.portfolio .project_detail{
+    display: block;
+    color: white;
+    font-size: .8rem;
+}
+.stopwatch:hover{
+    
+    background-image: url(../image/stopwatchMob.png);
+    background-image: url(../image/stopwatchWin.png);
+    background-position: center;
+    background-size: cover;
+     font-size: 2rem;
+    color: aliceblue;
+}
+.stopwatch .project_detail{
+    display: block;
+    color: blue;
+    font-size: .8rem;
+}
+.github:hover{
+    background-image: url(../image/githubMob.png);
+    background-image: url(../image/githubWin.png);
+    background-position: center;
+    background-size: cover;
+    font-size: 2rem;
+    color: orangered;
+}
+.github .project_detail{
+    display: block;
+    color: green;
+    font-size: .8rem;
+}
+.small{
+    display: none;
+}
 @media screen and (width<=768px){
     .projects{
         display: flex;
@@ -656,11 +729,63 @@ footer .typeline {
         /* gap: 1rem; */
         padding: 2% 2% 0 2%;
     }
+    .projects>a{
+        display: block;
+        height: 23%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        color: black;
+    }
     .project_item{
         /* border: 1px solid red; */
-        height: 23%;
+        height: 100%;
         width: 100%;
         padding: 1rem;
         text-align: start;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .small{
+        display: block;
+        font-size: .7rem;
+    }
+    .ardarts:hover{
+        background-image: url(../image/arDartsWin.png);
+        background-image: url(../image/arDartsMob.png);
+        background-position: center;
+        background-size: cover;
+        font-size: 2rem;
+        transition: ease-out 1s;
+        color: green;
+    }
+    .portfolio:hover{
+        
+        background-image: url(../image/portfolioWin.png);
+        background-image: url(../image/portfolioMob.png);
+        background-position: center;
+        background-size: cover;
+        font-size: 2rem;
+        color: aliceblue;
+        
+    }
+    .stopwatch:hover{
+        
+        background-image: url(../image/stopwatchWin.png);
+        background-image: url(../image/stopwatchMob.png);
+        background-position: center;
+        background-size: cover;
+        font-size: 2rem;
+        color: aliceblue;
+    }
+    .github:hover{
+        background-image: url(../image/githubWin.png);
+        background-image: url(../image/githubMob.png);
+        background-position: center;
+        background-size: cover;
+         font-size: 2rem;
+        color: orangered;
     }
 }
