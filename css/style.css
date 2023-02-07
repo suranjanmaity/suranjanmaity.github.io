@@ -671,7 +671,7 @@ footer .typeline {
 }
 .project_detail{
     display: block;
-    color: orange;
+    color: rgb(255, 140, 0);
     font-size: .8rem;
     font-family:"Major Mono Display";
 }
