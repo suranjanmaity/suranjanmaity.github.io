@@ -36,7 +36,6 @@ body .container {
     align-items: center;
     padding: 0rem .5rem 0rem .5rem;
     width: 100vw;
-    min-height: 100vh;
     scroll-snap-align: end;
 }
 
@@ -46,19 +45,20 @@ section .sectionX {
 }
 
 #thanks-for-the-visit{
+    min-height: 100vh;
     height: fit-content;
 }
 #project{
     background-color: darkblue;
-    min-height: 100vh;
+    min-height: 70vh;
 }
 #about{
     background-color: darkorange;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding: 0 3rem;
 }
 #contact{
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
 nav {
@@ -107,7 +107,7 @@ nav>.nav-section {
 
 #nav-logo-section>a>i>img {
     transition: ease-out .5s;
-    height: 2rem;
+    height: 1.5rem;
 }
 
 #nav-link-section>a {
@@ -124,7 +124,7 @@ nav>.nav-section {
 }
 
 #nav-logo-section>a>i>img:hover {
-    height: 3rem;
+    height: 1.8rem;
     transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
     cursor: cell;
 
@@ -143,7 +143,7 @@ nav>.nav-section {
 }
 
 #nav-contact-section>a:hover {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     cursor: cell;
     transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s;
 }
@@ -155,7 +155,7 @@ nav>.nav-section {
 
 #nav-social-section,
 #nav-contact-section {
-    flex-grow: .5;
+    flex-basis: calc(100vw/5);
 }
 
 * {
@@ -595,6 +595,9 @@ footer .typeline {
     padding: 1rem;
     background: rgb(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
+}
+.footer-social>a>i{
+cursor: cell;
 }
 .projects{
     /* border: 1px solid red; */
