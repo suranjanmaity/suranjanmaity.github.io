@@ -1,67 +1,117 @@
-let section_project = document.querySelector("#project");
-let project = document.querySelector('.projects');
-let project_item = document.querySelectorAll('.project_item');
-project.style.display = 'none';
-// Create the observer
-const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry) => {
-        const project_item = entry.target.querySelectorAll('.project_item');
-        // if observed element is visible
-        if (entry.isIntersecting) {
-            project.style.display = 'flex';
-            project_item.forEach(item=> {
-                setTimeout(() => {
-                item.classList.add('entry-animation');
-                item.style.display = 'flex';
-                },1000);
+document.addEventListener('DOMContentLoaded', () => {
+    // 0. Micro-Interaction: Cursor Glow Tracking
+    document.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--mouse-x', e.clientX);
+        document.documentElement.style.setProperty('--mouse-y', e.clientY);
+    }, { passive: true });
+
+    // 1. Theme Toggle Logic
+    const themeToggle = document.querySelector('#theme-toggle');
+    const htmlElement = document.documentElement;
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Set new theme
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolio-theme', newTheme);
+            
+            // Force browser repaint to overcome WebKit variable invalidation bug
+            document.body.style.display = 'none';
+            void document.body.offsetHeight; 
+            document.body.style.display = '';
+        });
+    }
+
+    // 2. The Signature Visual: Incident Trace Logic
+    const traceLine = document.querySelector('#incident-trace');
+    const systemCards = document.querySelectorAll('.system-card');
+    const navLogo = document.querySelector('#nav-progress-logo');
+
+    const updateScrollVisuals = () => {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        
+        // Update vertical trace height
+        if (traceLine) {
+            traceLine.style.height = `${scrollPercent}%`;
+            
+            // Check for 'warning' zones (Red-shift logic for Incidents & Triage)
+            let inWarningZone = false;
+            
+            // Re-target elements that signify a failure response (Timeline & Post-Mortems)
+            const warningZones = document.querySelectorAll('#timeline, #work');
+            
+            warningZones.forEach(zone => {
+                const rect = zone.getBoundingClientRect();
+                // If the top third of the screen is within this section
+                if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 3) {
+                    inWarningZone = true;
+                }
             });
-            return;
+            
+            if (inWarningZone) {
+                traceLine.classList.add('glitch');
+            } else {
+                traceLine.classList.remove('glitch');
+            }
         }
-        project.style.display = 'none';
-        project_item.forEach(item=> {
-            item.classList.remove('entry-animation');
-            item.style.display = 'none';
+
+        // Nav Logo Progress (Subtle opacity shift)
+        if (navLogo) {
+            navLogo.style.opacity = 0.5 + (scrollPercent / 200); 
+        }
+    };
+
+    window.addEventListener('scroll', updateScrollVisuals, { passive: true });
+    updateScrollVisuals(); // Initial call
+
+    // 3. Staggered Blur-Reveal Intersection Observer
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // 4. Smooth Scrolling for Navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
+            if (target) {
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-});
-// Tell the observer which elements to track
-observer.observe(section_project);
-let project_heading = new Array();
-for (let index = 0; index < project_item.length; index++) {
-    project_heading[index] = project_item[index].children[0];
-};
-for (let index = 0; index < project_item.length; index++) {
-    const element = project_item[index];
-    element.addEventListener("mouseover", () => {
-        element.children[1].style.display = "none";
-        if(index==0){
-            project_heading[0].style.color = "#FFBF00";
-            project_heading[0].style.textShadow = "5px 5px 10px darkred";
-        }
-        if(index==1){
-            project_heading[1].style.color = "white";
-            project_heading[1].style.textShadow = "5px 5px 10px  #FF00FF ";
-        }
-        if(index==2){
-            project_heading[2].style.color = "#FCEDDA";
-            project_heading[2].style.textShadow = "5px 5px 10px #EE4E34";
-        }
-        if(index==3){
-            project_heading[3].style.color = "lightgreen";
-            project_heading[3].style.textShadow = "5px 5px 10px black";
-        }
-    });
-    element.addEventListener("mouseout", () => {
-        element.children[1].style.display = "flex";
-        project_heading[0].style.color = "white";
-        project_heading[1].style.color = "white";
-        project_heading[2].style.color = "white";
-        project_heading[3].style.color = "white";
-        project_heading[0].style.textShadow = "none";
-        project_heading[1].style.textShadow = "none";
-        project_heading[2].style.textShadow = "none";
-        project_heading[3].style.textShadow = "none";
 
-    });
-};
-console.log(project_heading);
+    // 5. Console Signature (Production Tier)
+    console.log(
+        "%c PRODUCTION SYSTEMS %c TELEMETRY STREAM ACTIVE v6.0 ",
+        "background: #111113; color: white; border: 1px solid #EF4444; padding: 4px 12px; font-family: monospace; font-weight: bold;",
+        "background: #EF4444; color: white; padding: 4px 12px; font-family: monospace;"
+    );
+});
