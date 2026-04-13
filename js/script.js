@@ -5,8 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.style.setProperty('--mouse-y', e.clientY);
     }, { passive: true });
 
-    // 1. Theme Toggle Logic
+    // 1. Theme Toggle & Mobile Menu Logic
     const themeToggle = document.querySelector('#theme-toggle');
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
     const htmlElement = document.documentElement;
     const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
     htmlElement.setAttribute('data-theme', savedTheme);
@@ -24,6 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.display = 'none';
             void document.body.offsetHeight; 
             document.body.style.display = '';
+        });
+    }
+
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
     }
 
