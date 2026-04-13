@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Fascinate+Inline&family=Lovers+Quarrel&family=Rock+Salt&family=Story+Script&display=swap');
 :root {
-    /* Precise Color Palette - { / } Brand Identity */
+    /* Humane Amber-Primary Palette - { / } Engineering Identity */
     --bg-base: #0B0F1A;
     --bg-surface: rgba(17, 24, 39, 0.7);
     --bg-surface-alt: rgba(31, 41, 55, 0.5);
@@ -9,12 +9,12 @@
     --accent-orange: #F59E0B;
     --accent-blue: #3B82F6;
     --accent-cyan: #06B6D4;
-    --accent: var(--accent-blue);
+    --accent: var(--accent-orange); /* Switched to Amber as primary Signal */
     
-    --accent-glow: rgba(59, 130, 246, 0.25);
-    --accent-dim: rgba(59, 130, 246, 0.05);
+    --accent-glow: rgba(245, 158, 11, 0.25);
+    --accent-dim: rgba(245, 158, 11, 0.05);
     
-    --text-primary: #F3F4F6;
+    --text-primary: #E5E7EB;
     --text-secondary: #9CA3AF;
     --text-muted: #6B7280;
     
@@ -30,13 +30,14 @@
 }
 
 [data-theme="light"] {
-    --bg-base: #FFFFFF;
-    --bg-surface: rgba(249, 250, 251, 0.8);
-    --bg-surface-alt: rgba(243, 244, 246, 0.7);
+    /* Warm 'Paper-White' for humane readability */
+    --bg-base: #FFFBF5; 
+    --bg-surface: rgba(255, 251, 245, 0.8);
+    --bg-surface-alt: rgba(245, 235, 215, 0.5);
     
-    --accent: #2563EB;
-    --accent-glow: rgba(37, 99, 235, 0.15);
-    --accent-dim: rgba(37, 99, 235, 0.06);
+    --accent: #D97706; /* Deep Amber for Light mode contrast */
+    --accent-glow: rgba(217, 119, 6, 0.15);
+    --accent-dim: rgba(217, 119, 6, 0.06);
     
     --text-primary: #111827;
     --text-secondary: #4B5563;
@@ -45,8 +46,8 @@
     --border: rgba(0, 0, 0, 0.08);
     --border-bright: rgba(0, 0, 0, 0.12);
     
-    --nav-bg: rgba(255, 255, 255, 0.9);
-    --blueprint-grid: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    --nav-bg: rgba(255, 251, 245, 0.9);
+    --blueprint-grid: radial-gradient(circle, rgba(165, 124, 0, 0.06) 1px, transparent 1px);
 }
 
 
@@ -202,14 +203,18 @@ nav .container {
     text-decoration: none;
     transition: var(--transition-smooth);
     white-space: nowrap;
-    box-shadow: 0 0 15px -5px var(--accent-glow);
+    box-shadow: 0 0 15px -10px var(--accent-glow);
 }
 
 .nav-cta:hover {
     background: var(--accent);
-    color: white !important;
+    color: #0B0F1A !important; /* High contrast on dark theme bg-base */
     box-shadow: 0 0 25px -5px var(--accent-glow);
     transform: translateY(-1px);
+}
+
+[data-theme="light"] .nav-cta:hover {
+    color: #FFFFFF !important;
 }
 
 .mobile-toggle {
@@ -262,6 +267,48 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
     color: var(--accent);
 }
 
+/* --- Stylized Visual Accents --- */
+.font-display {
+    font-family: 'Fascinate Inline', cursive;
+}
+
+.font-handwritten {
+    font-family: 'Rock Salt', cursive;
+    font-size: 11px;
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
+.font-script {
+    font-family: 'Story Script', cursive;
+    font-size: 24px;
+}
+
+.font-signature {
+    font-family: 'Lovers Quarrel', 'Arizonia', cursive;
+    font-size: 42px;
+    letter-spacing: 0.05em;
+}
+
+.arch-number {
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    font-size: 120px;
+    opacity: 0.04;
+    color: var(--text-primary);
+    pointer-events: none;
+    z-index: -1;
+    font-family: 'Fascinate Inline', cursive;
+}
+
+.annotation {
+    position: absolute;
+    color: var(--accent);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 /* --- Hero Section --- */
 
 #hero {
@@ -293,6 +340,10 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
 
 .hero-headline {
     margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subheadline {
@@ -451,12 +502,12 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
 }
 
 .system-card:hover {
-    border-color: var(--accent-blue);
-    background: linear-gradient(to bottom right, var(--bg-surface), rgba(59, 130, 246, 0.1));
+    border-color: var(--accent);
+    background: linear-gradient(to bottom right, var(--bg-surface), var(--accent-dim));
     transform: translateY(-4px);
 }
 
-/* --- Iteration 3: Evidence Components --- */
+/* --- Evidence Components --- */
 
 .system-evidence {
     margin: 24px 0;
@@ -514,13 +565,13 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
 
 .trace-line {
     width: 1px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
+    background: linear-gradient(to bottom, var(--accent-orange), var(--accent-cyan), transparent);
     transition: height 0.3s ease, background 0.5s ease;
     box-shadow: 0 0 15px var(--accent-glow);
 }
 
 [data-theme="light"] .trace-line {
-    background: linear-gradient(to bottom, #2563EB, transparent);
+    background: linear-gradient(to bottom, var(--accent-orange), var(--accent-cyan), transparent);
     width: 2px; /* Slight thickness increase for light mode visibility */
 }
 
@@ -586,8 +637,8 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
 }
 
 .decision-block.accepted {
-    background: rgba(59, 130, 246, 0.05);
-    border: 1px solid rgba(59, 130, 246, 0.1);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-glow);
     color: var(--accent);
 }
 
@@ -599,7 +650,7 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
     font-size: 10px;
 }
 
-/* --- Iteration 3: Narrative Sections --- */
+/* --- Narrative Sections --- */
 
 .thinking-grid {
     display: grid;

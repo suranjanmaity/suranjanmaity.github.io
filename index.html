@@ -76,7 +76,10 @@
                         <p style="font-size: 22px; color: var(--text-primary); font-weight: 500; margin-bottom: 4px;">
                             Full-Stack Engineer <span style="color: var(--text-muted); font-weight: 300;">( .NET + Angular )</span>
                         </p>
-                        <p style="font-size: 16px; color: var(--text-secondary); max-width: 650px;">
+                        <p style="font-size: 16px; color: var(--accent); margin-top: 12px; margin-bottom: 24px;" class="font-script reveal staggered-2">
+                            Crafted with architectural precision & a humane touch.
+                        </p>
+                        <p style="font-size: 16px; color: var(--text-secondary); max-width: 650px;" class="reveal staggered-2">
                             Handled production issues in systems serving 50k+ daily transactions. Focused on performance, system behavior, and production-grade reliability across the entire stack.
                         </p>
                     </div>
@@ -107,14 +110,16 @@
 
         <!-- Section: Selected Production Work (Strict Metric Proofs) -->
         <section id="work">
-            <div class="container">
-                <span class="section-label">Selected Work</span>
+            <div class="container" style="position: relative;">
+                <div class="arch-number">01</div>
+                <span class="section-label font-display">Selected Work</span>
                 <h2>Production Proof Blocks</h2>
                 
                 <div class="grid systems-grid reveal" style="grid-template-columns: 1fr; gap: 48px;">
                     
                     <!-- Proof 1: Computation Pipeline Bottleneck -->
-                    <div class="system-card staggered-1" style="padding: 40px;">
+                    <div class="system-card staggered-1" style="padding: 40px; position: relative;">
+                        <div class="annotation font-handwritten" style="top: -10px; right: 20px; transform: rotate(5deg);">Latency bottleneck isolated & liquidated.</div>
                         <h3 class="system-title" style="margin-bottom: 24px; font-size: 24px;">1. Computation Pipeline Bottleneck</h3>
                         
                         <div style="font-size: 15px; color: var(--text-secondary); margin-bottom: 16px;">
@@ -148,7 +153,8 @@
                     </div>
 
                     <!-- Proof 2: Resiliency Gateway -->
-                    <div class="system-card staggered-2" style="padding: 40px;">
+                    <div class="system-card staggered-2" style="padding: 40px; position: relative;">
+                        <div class="annotation font-handwritten" style="bottom: 20px; left: -30px; transform: rotate(-8deg); width: 120px;">Masking complexity from the consumer UI.</div>
                         <h3 class="system-title" style="margin-bottom: 24px; font-size: 24px;">2. External Integration Fault Tolerance</h3>
                         
                         <div style="font-size: 15px; color: var(--text-secondary); margin-bottom: 16px;">
@@ -221,8 +227,9 @@
 
         <!-- Section: Deep Dive (Hard Evidence Layer) -->
         <section id="evidence" style="border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); background-color: var(--bg-surface-alt);" data-vibe="warning">
-            <div class="container">
-                <span class="section-label" style="color: #EF4444;">Raw Evidence</span>
+            <div class="container" style="position: relative;">
+                <div class="arch-number">02</div>
+                <span class="section-label font-display" style="color: #EF4444;">Raw Evidence</span>
                 <h2>Deep-Dive: Checkout API Deadlock Triage</h2>
                 <p style="color: var(--text-secondary); max-width: 650px; margin-bottom: 40px; font-size: 15px;">
                     When an enterprise checkout API experienced catastrophic blocking during a high-traffic window, it required immediate triage. This is the chronological resolution path isolating the bottleneck down to a background worker holding a strict table lock.
@@ -243,8 +250,9 @@
                         <details style="margin-top: 16px;">
                             <summary>View SQL Session Telemetry Trace</summary>
                             <div class="details-content">
+                                <div class="annotation font-handwritten" style="top: 0; right: -40px; transform: rotate(15deg); color: #EF4444;">Exclusive table lock found.</div>
                                 <pre class="code-block" style="margin: 0;"><span class="keyword">SELECT</span> 
-    r.session_id, status, <span class="operator">command</span>, <span class="string">blocking_session_id</span>, wait_type, q.text <span class="keyword">AS</span> FailedQuery
+                                    r.session_id, status, <span class="operator">command</span>, <span class="string">blocking_session_id</span>, wait_type, q.text <span class="keyword">AS</span> FailedQuery
 <span class="keyword">FROM</span> sys.dm_exec_requests r
 <span class="keyword">CROSS APPLY</span> sys.dm_exec_sql_text(r.sql_handle) q
 <span class="keyword">WHERE</span> r.blocking_session_id <span class="operator"><></span> <span class="number">0</span>;
@@ -273,8 +281,9 @@ FailedQuery:
 
         <!-- Section: Engineering Approach -->
         <section id="approach" class="bg-blueprint">
-            <div class="container">
-                <span class="section-label">Engineering Ethos</span>
+            <div class="container" style="position: relative;">
+                <div class="arch-number">03</div>
+                <span class="section-label font-display">Engineering Ethos</span>
                 <h2>How I Think</h2>
                 <p style="color: var(--text-secondary); max-width: 600px; margin-bottom: 40px; font-size: 15px;">A senior engineer is defined by the practices they optimize for in a production environment.</p>
                 
@@ -298,7 +307,7 @@ FailedQuery:
         <!-- Section: Tech Arsenal -->
         <section id="skills">
             <div class="container">
-                <span class="section-label">Production Tested</span>
+                <span class="section-label font-display">Production Tested</span>
                 <h2>Core Toolkit</h2>
                 
                 <div class="skills-wrapper reveal">
@@ -365,6 +374,10 @@ FailedQuery:
                     <a href="https://linkedin.com/in/suranjan-maity/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://github.com/suranjanmaity" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://leetcode.com/Suranjan_Maity/" class="social-link" target="_blank"><i class="fas fa-code"></i></a>
+                </div>
+
+                <div class="font-signature" style="margin-top: 48px; opacity: 0.8; font-size: 48px; color: var(--accent); transform: rotate(-3deg); display: inline-block;">
+                    Suranjan Maity
                 </div>
             </div>
         </section>

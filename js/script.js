@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
         const scrollY = window.scrollY;
 
-        // 1. Decoupled Branding Engine (Iteration 16)
+        // 1. Decoupled Branding Engine
         const journeyFollower = document.querySelector('.logo-journey-follower');
         const journeyImage = document.querySelector('.logo-journey-image');
         const heroSection = document.querySelector('#hero');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             journeyFollower.style.offsetDistance = `${currentDistance}%`;
 
-            // --- C. Super-Zoom Pulse on CHILD (Iteration 17: Double-Pulse) ---
+            // --- C. Super-Zoom Pulse on CHILD (Double-Pulse) ---
             /* Previous Logic:
             const maxScale = 55;
             const minScale = 7;
@@ -177,23 +177,45 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
-    // 4. Smooth Scrolling for Navigation
+    // 4. Custom High-Fidelity Smooth Scroll Engine
+    const smoothScroll = (targetSelector, duration = 1000) => {
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
+        
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        // Cubic Easing for 'Humane' intentional feel
+        const ease = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t * t + b;
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+        };
+
+        const animation = (currentTime) => {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            
+            window.scrollTo(0, run);
+            
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        };
+
+        requestAnimationFrame(animation);
+    };
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || !targetId) return;
             
-            const target = document.querySelector(targetId);
-            if (target) {
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            smoothScroll(targetId);
         });
     });
 
