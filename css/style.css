@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-    /* Color Palette - Enterprise SaaS Style (Dark - Default) */
-    --bg-base: #0A0A0B;
-    --bg-surface: #111113;
-    --bg-surface-alt: #161618;
+    /* Precise Color Palette - { / } Brand Identity */
+    --bg-base: #0B0F1A;
+    --bg-surface: rgba(17, 24, 39, 0.7);
+    --bg-surface-alt: rgba(31, 41, 55, 0.5);
     
-    --accent: #3B82F6;
+    --accent-orange: #F59E0B;
+    --accent-blue: #3B82F6;
+    --accent-cyan: #06B6D4;
+    --accent: var(--accent-blue);
+    
     --accent-glow: rgba(59, 130, 246, 0.25);
     --accent-dim: rgba(59, 130, 246, 0.05);
     
@@ -14,13 +18,12 @@
     --text-secondary: #9CA3AF;
     --text-muted: #6B7280;
     
-    --border: rgba(255, 255, 255, 0.06);
-    --border-bright: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.15);
     
-    --nav-bg: rgba(10, 10, 11, 0.85);
+    --nav-bg: rgba(11, 15, 26, 0.85);
     --blueprint-grid: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     
-    /* Spacing & Sizing */
     --container-max-width: 1100px;
     --section-spacing: 120px;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -28,8 +31,8 @@
 
 [data-theme="light"] {
     --bg-base: #FFFFFF;
-    --bg-surface: #F9FAFB;
-    --bg-surface-alt: #F3F4F6;
+    --bg-surface: rgba(249, 250, 251, 0.8);
+    --bg-surface-alt: rgba(243, 244, 246, 0.7);
     
     --accent: #2563EB;
     --accent-glow: rgba(37, 99, 235, 0.15);
@@ -39,10 +42,10 @@
     --text-secondary: #4B5563;
     --text-muted: #9CA3AF;
     
-    --border: rgba(0, 0, 0, 0.06);
-    --border-bright: rgba(0, 0, 0, 0.1);
+    --border: rgba(0, 0, 0, 0.08);
+    --border-bright: rgba(0, 0, 0, 0.12);
     
-    --nav-bg: rgba(255, 255, 255, 0.85);
+    --nav-bg: rgba(255, 255, 255, 0.9);
     --blueprint-grid: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
@@ -91,30 +94,39 @@ body {
     background: radial-gradient(circle closest-side, rgba(37, 99, 235, 0.2), transparent);
 }
 
-.hero-glow {
-    position: absolute;
+/* --- Global Branding Layer: The Journey --- */
+.logo-journey-container {
+    position: fixed;
     inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-end; /* Shift logo to the right */
-    align-items: center;
-    padding-right: 5%; /* Anchor it slightly off the edge */
+    z-index: -10; /* Locked at bottom */
+    pointer-events: none; /* Must be transparent to clicks */
+    display: block;
+    background-color: var(--bg-base);
 }
 
-.hero-logo-bg {
-    width: 60%;
-    max-width: 800px;
-    opacity: 0.35;
-    filter: blur(15px);
-    transition: opacity 0.3s ease; /* Remove filter from transition to prevent jank during scroll */
+.logo-journey-follower {
+    position: absolute; /* Relative to fixed container */
+    width: 250px;
+    height: auto;
+    will-change: offset-distance;
+    
+    /* Move Path Geometry to Parent */
+    offset-path: path('M 200,300 L 500,300 C 600,300 600,500 500,550 C 400,600 400,750 550,750 L 750,700 L 500,350 L 900,300 C 1000,300 1000,600 900,650 C 800,700 800,850 1000,850 L 1200,850');
+    offset-rotate: 0deg;
+}
+
+.logo-journey-image {
+    width: 100%;
+    height: auto;
+    opacity: 0.12;
+    transition: opacity 0.8s ease;
     will-change: transform;
+    display: block;
+    /* Transform handled dynamically via JS on CHILD */
 }
 
-[data-theme="light"] .hero-logo-bg {
-    opacity: 0.25;
-    filter: blur(20px) brightness(0.7) contrast(1.2); /* darken logo for light backgrounds */
+[data-theme="light"] .logo-journey-image {
+    opacity: 0.08;
 }
 
 /* --- Layout Components --- */
@@ -383,19 +395,19 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 32px;
-    transition: var(--transition-smooth), background-color 0.3s ease, border-color 0.3s ease;
+    transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px) saturate(1.8); /* Glassmorphism for readability */
+    -webkit-backdrop-filter: blur(12px) saturate(1.8);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .system-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 40px -10px var(--accent-glow);
-    background: linear-gradient(to bottom right, var(--bg-surface), var(--accent-dim));
+    border-color: var(--accent-blue);
+    background: linear-gradient(to bottom right, var(--bg-surface), rgba(59, 130, 246, 0.1));
     transform: translateY(-4px);
 }
 

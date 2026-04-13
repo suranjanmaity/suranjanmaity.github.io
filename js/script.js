@@ -36,12 +36,75 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
         const scrollY = window.scrollY;
 
-        // 1. Hero Logo Parallax (Top 1% Depth)
-        const heroLogo = document.querySelector('.hero-logo-bg');
-        if (heroLogo) {
-            // Translate logo down at 40% of scroll speed to create parallax offset
-            const yPos = scrollY * 0.4;
-            heroLogo.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        // 1. Decoupled Branding Engine (Iteration 16)
+        const journeyFollower = document.querySelector('.logo-journey-follower');
+        const journeyImage = document.querySelector('.logo-journey-image');
+        const heroSection = document.querySelector('#hero');
+        
+        if (journeyFollower && journeyImage && heroSection) {
+            const scrollY = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+            const totalScrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const totalAfterHero = totalScrollable - heroHeight;
+            
+            // --- A. Progress Calculations ---
+            // Global progress (0 to 1 over entire page) for the Zoom Pulse
+            const pGlobal = Math.min(scrollY / totalScrollable, 1);
+            
+            // Segment progress (Starts after Hero) for the Path Motion
+            const pMotion = (scrollY > heroHeight)
+                ? Math.min((scrollY - heroHeight) / totalAfterHero, 1)
+                : 0;
+            
+            // --- B. Engineered Pacing (Path Only) ---
+            const remapMotion = (val) => {
+                if (val < 0.3) return val * 0.6; 
+                if (val < 0.6) return 0.18 + (val - 0.3) * 2.1;
+                return 0.81 + (val - 0.6) * 0.475;
+            };
+            
+            const adjustedMotion = remapMotion(pMotion);
+            const snap = (v) => Math.round(v * 1000) / 1000;
+            
+            // Set Path Distance on PARENT (Reverse Trace: 100 -> 0)
+            const currentDistance = (scrollY > heroHeight) 
+                ? (1 - snap(adjustedMotion)) * 100 
+                : 100;
+            
+            journeyFollower.style.offsetDistance = `${currentDistance}%`;
+
+            // --- C. Super-Zoom Pulse on CHILD (Iteration 17: Double-Pulse) ---
+            /* Previous Logic:
+            const maxScale = 55;
+            const minScale = 7;
+            const pulseScale = (pGlobal <= 0.5)
+                ? minScale + (pGlobal * 2) * (maxScale - minScale)
+                : maxScale - ((pGlobal - 0.5) * 2) * (maxScale - minScale);
+            */
+            
+            // New Double-Pulse Engine: minScale -> maxScale -> minScale -> maxScale -> minScale
+            const maxScale = 15;
+            const minScale = 7;
+            let pulseScale;
+            if (pGlobal < 0.25) {
+                // Phase 1: minScale -> maxScale
+                pulseScale = minScale + (pGlobal / 0.25) * (maxScale - minScale);
+            } else if (pGlobal < 0.50) {
+                // Phase 2: maxScale -> minScale
+                pulseScale = maxScale - ((pGlobal - 0.25) / 0.25) * (maxScale - minScale);
+            } else if (pGlobal < 0.75) {
+                // Phase 3: minScale -> maxScale
+                pulseScale = minScale + ((pGlobal - 0.50) / 0.25) * (maxScale - minScale);
+            } else {
+                // Phase 4: maxScale -> minScale
+                pulseScale = maxScale - ((pGlobal - 0.75) / 0.25) * (maxScale - minScale);
+            }
+            
+            journeyImage.style.transform = `scale(${pulseScale}) translateZ(0)`;
+            
+            // Visibility
+            const themeOpacity = document.documentElement.getAttribute('data-theme') === 'light' ? '0.08' : '0.12';
+            journeyImage.style.opacity = themeOpacity;
         }
         
         // 2. Update vertical trace height
