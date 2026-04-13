@@ -87,23 +87,34 @@ body {
 }
 
 [data-theme="light"] .cursor-glow {
-    opacity: 0.8;
+    opacity: 0.6;
+    background: radial-gradient(circle closest-side, rgba(37, 99, 235, 0.2), transparent);
 }
 
 .hero-glow {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.08), transparent 60%);
+    inset: 0;
     z-index: -1;
     pointer-events: none;
-    transition: background 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end; /* Shift logo to the right */
+    align-items: center;
+    padding-right: 5%; /* Anchor it slightly off the edge */
 }
 
-[data-theme="light"] .hero-glow {
-    background: radial-gradient(circle at 30% 40%, rgba(37, 99, 235, 0.12), transparent 60%);
+.hero-logo-bg {
+    width: 60%;
+    max-width: 800px;
+    opacity: 0.35;
+    filter: blur(15px);
+    transition: opacity 0.3s ease; /* Remove filter from transition to prevent jank during scroll */
+    will-change: transform;
+}
+
+[data-theme="light"] .hero-logo-bg {
+    opacity: 0.25;
+    filter: blur(20px) brightness(0.7) contrast(1.2); /* darken logo for light backgrounds */
 }
 
 /* --- Layout Components --- */
@@ -445,11 +456,15 @@ h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
 }
 
 .trace-line {
-    width: 100%;
-    height: 0;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    transition: height 0.1s linear;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    transition: height 0.3s ease, background 0.5s ease;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+[data-theme="light"] .trace-line {
+    background: linear-gradient(to bottom, #2563EB, transparent);
+    width: 2px; /* Slight thickness increase for light mode visibility */
 }
 
 .trace-line.glitch {

@@ -34,8 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateScrollVisuals = () => {
         const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        const scrollY = window.scrollY;
+
+        // 1. Hero Logo Parallax (Top 1% Depth)
+        const heroLogo = document.querySelector('.hero-logo-bg');
+        if (heroLogo) {
+            // Translate logo down at 40% of scroll speed to create parallax offset
+            const yPos = scrollY * 0.4;
+            heroLogo.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        }
         
-        // Update vertical trace height
+        // 2. Update vertical trace height
         if (traceLine) {
             traceLine.style.height = `${scrollPercent}%`;
             
